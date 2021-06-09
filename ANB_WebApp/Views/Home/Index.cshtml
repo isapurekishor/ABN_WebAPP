@@ -1,0 +1,61 @@
+﻿@model ANB_WebApp.Models.ViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/css/StyleSheet.css" rel="stylesheet" />
+<script src="~/js/JavaScript.js"></script>
+<h4>Circle Calculations Using Web API</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Radius" class="control-label"></label>
+                <input asp-for="Radius" class="form-control" />
+                <span asp-validation-for="Radius" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Start" class="btn btn-primary" />
+            </div>
+            <div class='progress progress-bar-success progress-bar-striped active' id="progress_div">
+                <div class='bar' id='bar1'></div>
+                <div class='percent' id='percent1'></div>
+            </div>
+            <input type="hidden" id="progress_width" value="0">
+        </form>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Diameter" class="control-label"></label>
+            <span><b>@Model.Diameter</b></span>           
+        </div>
+        <div class="form-group">
+            <label asp-for="Circumference" class="control-label"></label>
+            <span><b>@Model.Circumference</b></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Area" class="control-label"></label>
+            <span><b>@Model.Area</b></span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Status" class="control-label"></label>
+            <span><b>@Model.Status</b></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Progress" class="control-label"></label>
+            <span><b>@Model.Progress %</b></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ExceutionTime" class="control-label"></label>
+            <span><b>@Model.ExceutionTime</b></span>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
